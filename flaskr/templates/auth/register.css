@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.image-section {
+  flex: 1;
+  background-image: url('Images/registerBackground.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.form-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    font-family: Consolas, monaco, monospace;
+    font-size: 64px;
+    color: #032345;
+    margin-top: -150px;
+    margin-left: -675px;
+
+}
+
+.form-section input {
+    margin-bottom: 85px;
+    padding: 20px;
+    font-size: 24px;
+    font-family: Consolas, monaco, monospace;
+    border: none;
+    border-bottom: 2px solid #000000;
+}
+
+.form-section input:focus {
+  border-bottom: 2px solid #5293d9;
+    outline: none;
+    animation: border_anim 0.5s linear forwards;
+
+}
+
+.form-section input:focus::placeholder {
+  color: transparent;
+}
+
+
+ @keyframes border_anim {
+	0%{
+		width: 10%;
+	}
+	100%{
+		width: 96.5%;
+	}
+}
+
+.form-section button.sign-up {
+  padding: 20px 30px;
+  font-size: 24px;
+  font-family: Consolas, monaco, monospace;
+  background: #032345;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+.form-section button.sign-up:hover {
+  background:#5293d9;
+}
