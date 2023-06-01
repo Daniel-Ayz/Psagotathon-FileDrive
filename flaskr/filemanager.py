@@ -52,7 +52,7 @@ def show_files():
 def view_file(filename):
     file_contents = ""
     if not (filename.endswith('.png') or filename.endswith('.pdf')):
-        with open(filename, 'r') as f:
+        with open("uploaded/"+filename, 'r') as f:
             file_contents = f.read()
     return render_template('view.html', filename=filename, file_contents=file_contents)
 
