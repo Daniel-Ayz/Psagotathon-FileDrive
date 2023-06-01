@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ filename }}</title>
+  </head>
+  <body>
+    {% if filename.endswith('.png') %}
+      <img src="{{ url_for('uploaded', filename=filename) }}" alt="{{ filename }}">
+    {% elif filename.endswith('.pdf') %}
+      <embed src="{{ url_for('uploaded', filename=filename) }}" style="min-height:100vh;width:100%"/>
+    {% else %}
+      <pre>{{ file_contents }}</pre>
+    {% endif %}
+  </body>
+</html>

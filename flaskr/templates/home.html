@@ -176,34 +176,15 @@
           <input type="submit" value="Upload">
         </form>
       {% endif %}
-    {% endblock %}
+
 
 
     <!-- Uploaded files -->
     <h2>Uploaded Files:</h2>
-    <ul> {% for file, category in files %} <li>
-      {% if file.endswith('.png') %}
-        <div class="file-icon"><img src="{{ url_for('static', filename='icons/png.png') }}" alt="{{ file }}"></div>
-      {% elif file.endswith('.pdf') %}
-        <div class="file-icon"><img src="{{ url_for('static', filename='icons/pdf.png') }}" alt="{{ file }}"></div>
-      {% elif file.endswith('.txt') %}
-        <div class="file-icon"><img src="{{ url_for('static', filename='icons/txt.png') }}" alt="{{ file }}"></div>
-      {% else %}
-        <div class="file-icon"><img src="{{ url_for('static', filename='icons/unknown.png') }}" alt="{{ file }}"></div>
-      {% endif %}
-      <div class="file-name"><a href="{{ url_for('view_file', filename=file) }}">{{ file }}</a></div>
-      <div class="file-category">Category: {{ category }}</div>
+    <ul> {% for file in files %} <li>
+      <div class="file-name"><a href="{{ url_for('filemanager.view_file', filename=file) }}">{{ file }}</a></div>
     </li> {% endfor %} </ul>
 
-    <!-- Add category -->
-    <h2>Add Category:</h2>
-    <form class="add-category-form" action="{{ url_for('add_category') }}" method="post">
-      <input type="text" name="new_category" placeholder="New Category">
-      <input type="submit" value="Add">
-    </form>
-
-    <!-- Categories -->
-    <h2>Categories:</h2>
-    <ul class="category-list"> {% for category in categories %} <li>{{ category }}</li> {% endfor %} </ul>
+  {% endblock %}
   </body>
 </html>
