@@ -1,34 +1,56 @@
-<!--{% extends 'base.html' %}-->
 
-<!--{% block header %}-->
-<!--  <h1>{% block title %}Log In{% endblock %}</h1>-->
-<!--{% endblock %}-->
+{% extends 'base.html' %}
 
-<!--{% block content %}-->
-<!--  <form method="post">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input name="username" id="username" required>-->
-<!--    <label for="password">Password</label>-->
-<!--    <input type="password" name="password" id="password" required>-->
-<!--    <input type="submit" value="Log In">-->
-<!--  </form>-->
-<!--{% endblock %}-->
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<!--<head>-->
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">-->
+<!--</head>-->
+  <form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Log In">
+  </form>
+<!--<html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="image-section"></div>-->
+<!--    <div class="form-section">-->
+<!--      <h1>Login to PsagotExplorer+!</h1>-->
+<!--    </div>-->
+<!--    <form method="post">-->
+<!--      <input type="username" id="username" placeholder="Username" >-->
+<!--      <input type="password" id="password" placeholder="Password">-->
+<!--      <button type="submit"  class="login">Login</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+{% endblock %}
 
 
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="login.css">
-</head>
-<body>
-  <div class="container">
-    <div class="image-section"></div>
-    <div class="form-section">
-      <h1>Login to PsagotExplorer+!</h1>
-      <input type="text" placeholder="Username" >
-      <input type="password" placeholder="Password">
-      <button type="submit" class="login">Login</button>
-    </div>
-  </div>
-</body>
-</html>
+
+<!--<html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" type="text/css" href="../../static/login.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+<!--    <div class="image-section"></div>-->
+<!--    <div class="form-section">-->
+<!--      <h1>Login to PsagotExplorer+!</h1>-->
+<!--      <input type="text" placeholder="Username" >-->
+<!--      <input type="password" placeholder="Password">-->
+<!--      <button type="submit" class="login">Login</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</body>-->
+<!--</html>-->
