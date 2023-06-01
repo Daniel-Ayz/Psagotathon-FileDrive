@@ -181,7 +181,7 @@
 
     <!-- Uploaded files -->
     <h2>Uploaded Files:</h2>
-    <ul> {% for file, category in files %} <li>
+    <ul> {% for file in files %} <li>
       {% if file.endswith('.png') %}
         <div class="file-icon"><img src="{{ url_for('static', filename='icons/png.png') }}" alt="{{ file }}"></div>
       {% elif file.endswith('.pdf') %}
@@ -192,7 +192,7 @@
         <div class="file-icon"><img src="{{ url_for('static', filename='icons/unknown.png') }}" alt="{{ file }}"></div>
       {% endif %}
       <div class="file-name"><a href="{{ url_for('view_file', filename=file) }}">{{ file }}</a></div>
-      <div class="file-category">Category: {{ category }}</div>
+<!--      <div class="file-category">Category: {{ category }}</div>-->
     </li> {% endfor %} </ul>
 
     <!-- Add category -->
