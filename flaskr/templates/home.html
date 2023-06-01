@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      /* Header */
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+      }
+
+      /* Navigation bar */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .navbar a.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      
+      /* Form */
+      form {
+        margin-bottom: 30px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="file"] {
+        margin-bottom: 10px;
+      }
+
+      select {
+        margin-bottom: 10px;
+      }
+
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      /* Uploaded files */
+      h2 {
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .file-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        width: 32px;
+        height: 30px;
+      }
+
+      .file-icon img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .file-name {
+        flex: 1;
+      }
+
+      .file-category {
+        margin-left: 10px;
+      }
+
+      /* Add category */
+      .add-category-form {
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .add-category-form input[type="text"] {
+        margin-right: 10px;
+      }
+
+      /* Categories */
+      .category-list {
+        margin-top: 10px;
+      }
+
+      .category-list li {
+        display: inline-block;
+        background-color: #eee;
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <h1>File Sharing Site</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <a class="active" href="#">File Explorer</a>
+      <a href="#">Reasearch</a>
+      {% if g.user %}
+      <a> {{ g.user['username'] }} </a>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+      {% else %}
+      <a href="{{ url_for('auth.register') }}">Register</a>
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+    </div>
+
+    {% extends 'base.html' %}
+
+    {% block header %}
+      <h1>{% block title %}Posts{% endblock %}</h1>
+      {% if g.user %}
+       <!-- Form -->
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file">Select a file:</label>
+          <input type="file" name="file" id="file">
+          <br>
+          <label for="category">Select a category:</label>
+          <select name="category" id="category"> {% for category in categories %} <option value="{{ category }}">{{ category }}</option> {% endfor %} </select>
+          <br>
+          <input type="submit" value="Upload">
+        </form>
+      {% endif %}
+    {% endblock %}
+
+
+    <!-- Uploaded files -->
+    <h2>Uploaded Files:</h2>
+    <ul> {% for file, category in files %} <li>
+      {% if file.endswith('.png') %}
+        <div class="file-icon"><img src="{{ url_for('static', filename='icons/png.png') }}" alt="{{ file }}"></div>
+      {% elif file.endswith('.pdf') %}
+        <div class="file-icon"><img src="{{ url_for('static', filename='icons/pdf.png') }}" alt="{{ file }}"></div>
+      {% elif file.endswith('.txt') %}
+        <div class="file-icon"><img src="{{ url_for('static', filename='icons/txt.png') }}" alt="{{ file }}"></div>
+      {% else %}
+        <div class="file-icon"><img src="{{ url_for('static', filename='icons/unknown.png') }}" alt="{{ file }}"></div>
+      {% endif %}
+      <div class="file-name"><a href="{{ url_for('view_file', filename=file) }}">{{ file }}</a></div>
+      <div class="file-category">Category: {{ category }}</div>
+    </li> {% endfor %} </ul>
+
+    <!-- Add category -->
+    <h2>Add Category:</h2>
+    <form class="add-category-form" action="{{ url_for('add_category') }}" method="post">
+      <input type="text" name="new_category" placeholder="New Category">
+      <input type="submit" value="Add">
+    </form>
+
+    <!-- Categories -->
+    <h2>Categories:</h2>
+    <ul class="category-list"> {% for category in categories %} <li>{{ category }}</li> {% endfor %} </ul>
+  </body>
+</html>
