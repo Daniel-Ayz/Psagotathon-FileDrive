@@ -10,6 +10,7 @@ from flaskr.db import get_db
 
 bp = Blueprint('filemanager', __name__)
 files = [x.name for x in os.scandir('uploaded') if x.is_file()]
+categories = {}
 
 
 @bp.route('/')
@@ -57,12 +58,12 @@ def view_file(filename):
     return render_template('view.html', filename=filename, file_contents=file_contents)
 
 
-# @bp.route('/add_category', methods=['POST'])
-# @login_required
-# def add_category():
-#     new_category = request.form.get('new_category')
-#     if not new_category:
-#         return jsonify({'error': 'No category specified'}), 400
-#
-#     categories.append(new_category)
-#     return redirect(url_for('show_files'))
+@bp.route('/add_category', methods=['POST'])
+@login_required
+def add_category():
+    new_category = request.form.get('new_category')
+    if not new_category:
+        return jsonify({'error': 'No category specified'}), 400
+
+    categories.append(new_category)
+    return redirect(url_for('show_files'))
