@@ -163,10 +163,19 @@
     {% extends 'base.html' %}
 
     {% block header %}
-      <h1>{% block title %}Posts{% endblock %}</h1>
+     <!-- Uploaded files -->
+    <div>
+    <h2>Uploaded Files:</h2>
+    <ul> {% for file in files %} <li>
+      <div class="file-name"><a href="{{ url_for('filemanager.view_file', filename=file) }}">{{ file }}</a></div>
+    </li> {% endfor %} </ul>
+    </div>
+    <h1></h1>
       {% if g.user %}
        <!-- Form -->
         <form action="/upload" method="post" enctype="multipart/form-data">
+              <h1>{% block title %}Upload{% endblock %}</h1>
+
           <label for="file">Select a file:</label>
           <input type="file" name="file" id="file">
           <br>
@@ -179,11 +188,7 @@
 
 
 
-    <!-- Uploaded files -->
-    <h2>Uploaded Files:</h2>
-    <ul> {% for file in files %} <li>
-      <div class="file-name"><a href="{{ url_for('filemanager.view_file', filename=file) }}">{{ file }}</a></div>
-    </li> {% endfor %} </ul>
+
 
   {% endblock %}
   </body>
