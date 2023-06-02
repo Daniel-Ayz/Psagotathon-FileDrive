@@ -171,26 +171,32 @@
     </li> {% endfor %} </ul>
     </div>
     <h1></h1>
-      {% if g.user %}
-       <!-- Form -->
-        <form action="/upload" method="post" enctype="multipart/form-data">
-              <h1>{% block title %}Upload{% endblock %}</h1>
+    {% if g.user %}
+    <!-- Form -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <h1>{% block title %}Upload{% endblock %}</h1>
 
-          <label for="file">Select a file:</label>
-          <input type="file" name="file" id="file">
-          <br>
-        </form>
-          <h2>Add Category:</h2>
-          <form class="add-category-form" action="{{ url_for('filemanager.add_category') }}" method="post">
-            <input type="text" name="new_category" placeholder="New Category">
-            <input type="submit" value="Add">
-          </form>
+      <label for="file">Select a file:</label>
+      <input type="file" name="file" id="file">
+      <br>
 
-          <label for="category">Select a category:</label>
-          <select name="category" id="category"> {% for category in categories %} <option value="{{ category }}">{{ category }}</option> {% endfor %} </select>
-          <br>
-          <input type="submit" value="Upload">
-      {% endif %}
+      <h2>Add Category:</h2>
+      <form class="add-category-form" action="{{ url_for('filemanager.add_category') }}" method="post">
+        <input type="text" name="new_category" placeholder="New Category">
+        <input type="submit" value="Add">
+      </form>
+
+      <label for="category">Select a category:</label>
+      <select name="category" id="category">
+        {% for category in categories %}
+        <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
+      </select>
+      <br>
+
+      <input type="submit" value="Upload">
+    </form>
+    {% endif %}
 
 
 
