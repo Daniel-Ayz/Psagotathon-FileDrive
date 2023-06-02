@@ -163,27 +163,44 @@
     {% extends 'base.html' %}
 
     {% block header %}
-      <h1>{% block title %}Posts{% endblock %}</h1>
-      {% if g.user %}
-       <!-- Form -->
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <label for="file">Select a file:</label>
-          <input type="file" name="file" id="file">
-          <br>
-          <label for="category">Select a category:</label>
-          <select name="category" id="category"> {% for category in categories %} <option value="{{ category }}">{{ category }}</option> {% endfor %} </select>
-          <br>
-          <input type="submit" value="Upload">
-        </form>
-      {% endif %}
-
-
-
-    <!-- Uploaded files -->
+     <!-- Uploaded files -->
+    <div>
     <h2>Uploaded Files:</h2>
     <ul> {% for file in files %} <li>
       <div class="file-name"><a href="{{ url_for('filemanager.view_file', filename=file) }}">{{ file }}</a></div>
     </li> {% endfor %} </ul>
+    </div>
+    <h1></h1>
+    {% if g.user %}
+    <!-- Form -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <h1>{% block title %}Upload{% endblock %}</h1>
+
+      <label for="file">Select a file:</label>
+      <input type="file" name="file" id="file">
+      <br>
+
+      <h2>Add Category:</h2>
+      <form class="add-category-form" action="{{ url_for('filemanager.add_category') }}" method="post">
+        <input type="text" name="new_category" placeholder="New Category">
+        <input type="submit" value="Add">
+      </form>
+
+      <label for="category">Select a category:</label>
+      <select name="category" id="category">
+        {% for category in categories %}
+        <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
+      </select>
+      <br>
+
+      <input type="submit" value="Upload">
+    </form>
+    {% endif %}
+
+
+
+
 
   {% endblock %}
   </body>
