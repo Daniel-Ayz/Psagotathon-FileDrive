@@ -1,24 +1,69 @@
-{% extends 'base2.html' %}
 
-{% block content %}
+<!--{% extends 'base.html' %}-->
+
+<!--{% block header %}-->
+<!--  <h1>{% block title %}Log In{% endblock %}</h1>-->
+<!--{% endblock %}-->
+
+<!--{% block content %}-->
+<!--<head>-->
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">-->
+<!--</head>-->
+<!--  <form method="post">-->
+<!--    <label for="username">Username</label>-->
+<!--    <input name="username" id="username" required>-->
+<!--    <label for="password">Password</label>-->
+<!--    <input type="password" name="password" id="password" required>-->
+<!--    <input type="submit" value="Log In">-->
+<!--  </form>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="image-section"></div>-->
+<!--    <div class="form-section">-->
+<!--      <h1>Login to PsagotExplorer+!</h1>-->
+<!--    </div>-->
+<!--    <form method="post">-->
+<!--      <input type="username" id="username" placeholder="Username" >-->
+<!--      <input type="password" id="password" placeholder="Password">-->
+<!--      <button type="submit"  class="login">Login</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!--{% endblock %}-->
+
+
+
+<!DOCTYPE html>
+<html>
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <link rel="stylesheet" type="text/css" href="../../static/login.css">
 </head>
 <body>
   <div class="container">
     <div class="image-section"></div>
     <div class="form-section">
       <h1>Login to PsagotExplorer+!</h1>
-      <form method="post" action="{{ url_for('auth.login') }}">
-        <div class="input-group">
-          <input type="text" name="username" id="username" placeholder="Username" required>
-        </div>
-        <div class="input-group">
-          <input type="password" name="password" id="password" placeholder="Password">
-        </div>
-        <button type="submit" class="login" value="Log In">Login</button>
-      </form>
+      <input type="text" placeholder="Username" >
+      <input type="password" placeholder="Password">
+      <button type="submit" class="login">Login</button>
     </div>
   </div>
+  <script>
+    var imageSection = document.querySelector('.image-section');
+    var images = [
+      'path/to/image1.jpg',
+      'path/to/image2.jpg',
+      'path/to/image3.jpg',
+      // Add more image paths as needed
+    ];
+    var randomIndex = Math.floor(Math.random() * images.length);
+    var randomImage = images[randomIndex];
+    imageSection.style.backgroundImage = 'url(' + randomImage + ')'
+  </script>
 </body>
-{% endblock %}
+</html>
