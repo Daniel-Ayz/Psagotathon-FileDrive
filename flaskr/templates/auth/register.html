@@ -18,17 +18,5 @@
       </form>
     </div>
   </div>
-  <script>
-    var imageSection = document.querySelector('.image-section');
-    var images = [
-      'path/to/image1.jpg',
-      'path/to/image2.jpg',
-      'path/to/image3.jpg',
-      // Add more image paths as needed
-    ];
-    var randomIndex = Math.floor(Math.random() * images.length);
-    var randomImage = images[randomIndex];
-    imageSection.style.backgroundImage = 'url(' + randomImage + ')'
-  </script>
 </body>
 {% endblock %}
