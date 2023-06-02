@@ -179,7 +179,8 @@
           <label for="file">Select a file:</label>
           <input type="file" name="file" id="file">
           <br>
-         <h2>Add Category:</h2>
+        </form>
+          <h2>Add Category:</h2>
           <form class="add-category-form" action="{{ url_for('add_category') }}" method="post">
             <input type="text" name="new_category" placeholder="New Category">
             <input type="submit" value="Add">
@@ -188,7 +189,6 @@
           <select name="category" id="category"> {% for category in categories %} <option value="{{ category }}">{{ category }}</option> {% endfor %} </select>
           <br>
           <input type="submit" value="Upload">
-        </form>
       {% endif %}
 
 
