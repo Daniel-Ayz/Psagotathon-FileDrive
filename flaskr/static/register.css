@@ -9,7 +9,7 @@
 
 .image-section {
   flex: 1;
-  background-image: url('../../static/Images/registerBackground.jpg');
+  background-image: url('Images/registerBackground.jpg');
   background-size: cover;
   background-position: center;
 }
