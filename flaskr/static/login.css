@@ -151,6 +151,7 @@ h1 {
 
 .form-section button.login {
   padding: 20px 30px;
+  width: 75px;
   font-size: 24px;
   font-family: Consolas, monaco, monospace;
   background: #032345;
