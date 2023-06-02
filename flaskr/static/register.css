@@ -7,12 +7,12 @@
   overflow: hidden;
 }
 
-.image-section {
-  flex: 1;
-  background-image: url('Images/registerBackground.jpg');
-  background-size: cover;
-  background-position: center;
-}
+/*.image-section {*/
+/*  flex: 1;*/
+/*  background-image: url('Images/registerBackground.jpg');*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*}*/
 
 .form-section {
   flex: 1;
