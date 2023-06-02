@@ -180,7 +180,7 @@
           <input type="file" name="file" id="file">
           <br>
          <h2>Add Category:</h2>
-          <form class="add-category-form" action="{{ url_for('add_category') }}" method="post">
+          <form class="add-category-form" action="{{ url_for('filemanager.add_category') }}" method="post">
             <input type="text" name="new_category" placeholder="New Category">
             <input type="submit" value="Add">
           </form>
