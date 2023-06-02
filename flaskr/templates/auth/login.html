@@ -38,20 +38,74 @@
 
 
 
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" type="text/css" href="../../static/login.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+<!--    <div class="image-section"></div>-->
+<!--    <div class="form-section">-->
+<!--      <h1>Login to PsagotExplorer+!</h1>-->
+<!--&lt;!&ndash;      <form method="post">&ndash;&gt;-->
+<!--      <input type="text" name="username" id="username" placeholder="Username" required>-->
+<!--      <input type="password" name = "password" id="password" placeholder="Password">-->
+<!--      <button type="submit" class="login">Login</button>-->
+<!--&lt;!&ndash;      </form>&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" type="text/css" href="../../static/login.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+<!--    <div class="image-section"></div>-->
+<!--    <div class="form-section">-->
+<!--      <h1>Login to PsagotExplorer+!</h1>-->
+<!--      <form method="post" action="your-action-url">-->
+<!--        <div class="input-group">-->
+<!--          <input type="text" name="username" id="username" placeholder="Username" required>-->
+<!--        </div>-->
+<!--        <div class="input-group">-->
+<!--          <input type="password" name="password" id="password" placeholder="Password">-->
+<!--        </div>-->
+<!--        <button type="submit" class="login">Login</button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+{% extends 'base2.html' %}
+
+{% block content %}
 <head>
-  <link rel="stylesheet" type="text/css" href="../../static/login.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
   <div class="container">
     <div class="image-section"></div>
     <div class="form-section">
       <h1>Login to PsagotExplorer+!</h1>
-      <input type="text" placeholder="Username" >
-      <input type="password" placeholder="Password">
-      <button type="submit" class="login">Login</button>
+      <form method="post" action="your-action-url">
+        <div class="input-group">
+          <input type="text" name="username" id="username" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="login">Login</button>
+      </form>
     </div>
   </div>
 </body>
 </html>
+{% endblock %}
